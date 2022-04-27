@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Expenses from "./routes/expenses";
 import Invoices from "./routes/invoices";
 import NotFound from "./routes/notFound";
+import Invoice from "./routes/invoice";
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,7 +17,9 @@ root.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="expenses" element={<Expenses />}> </Route>
-          <Route path="invoices" element={<Invoices />}> </Route>
+          <Route path="invoices" element={<Invoices />}>
+            <Route path=":invoiceId" element={<Invoice />}> </Route>
+          </Route>
           <Route path="*" element={<NotFound />}> </Route>
         </Route>
       </Routes>
