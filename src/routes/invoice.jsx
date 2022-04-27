@@ -1,11 +1,13 @@
 import { Fragment } from 'react';
-import { useParams } from 'react-router-dom';
-import { getInvoice } from '../data';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { getInvoice, deleteInvoice } from '../data';
 
 export default function Invoice() {
   let params = useParams();
-
+  let location = useLocation();
+  let navigate = useNavigate();
   let invoice = getInvoice(parseInt(params.invoiceId, 10));
+
   return (
     <main style={{ padding: "1rem" }}>
       <h2>Total Due: {invoice.amount}</h2>
@@ -13,6 +15,16 @@ export default function Invoice() {
         {invoice.name}: {invoice.number}
       </p>
       <p>Due Date: {invoice.due}</p>
+      <p>
+        <button
+          onClick={() => {
+            deleteInvoice(invoice.number);
+            navigate("/invoices" + location.search);
+          }}
+        >
+          Delete
+        </button>
+      </p>
     </main>
   );
 }
