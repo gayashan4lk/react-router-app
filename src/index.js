@@ -3,13 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Expenses from "./routes/expenses";
+import Invoices from "./routes/invoices";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode> 
     <BrowserRouter>
-      <App />
+      <Routes>
+        <Route path="/" element={<App />}> </Route>
+        <Route path="expenses" element={<Expenses />}> </Route>
+        <Route path="invoices" element={<Invoices />}> </Route>
+      </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );
