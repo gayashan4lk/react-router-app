@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Expenses from "./routes/expenses";
 import Invoices from "./routes/invoices";
+import NotFound from "./routes/notFound";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,6 +16,7 @@ root.render(
         <Route path="/" element={<App />}>
           <Route path="expenses" element={<Expenses />}> </Route>
           <Route path="invoices" element={<Invoices />}> </Route>
+          <Route path="*" element={<NotFound />}> </Route>
         </Route>
       </Routes>
     </BrowserRouter>
